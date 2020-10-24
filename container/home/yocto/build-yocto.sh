@@ -20,8 +20,8 @@ if [ -e "$TARGET_DL_DIR" ] ; then
     echo DL_DIR=\"$TARGET_DL_DIR\" >> conf/site.conf
 fi
 
-bitbake meta-toolchain
+bitbake meta-toolchain --runall=fetch
 #./tmp/deploy/sdk/fsl-framebuffer-glibc-x86_64-meta-toolchain-armv7at2hf-neon-toolchain-2.6.2.sh -y
 ./tmp/deploy/sdk/fsl-imx-fb-glibc-x86_64-meta-toolchain-cortexa7t2hf-neon-toolchain-5.4-zeus.sh -y
 
-bitbake core-image-minimal
+bitbake core-image-minimal --runall=fetch
