@@ -22,6 +22,7 @@ TARGET_SSTATE_DIR=/home/shared/sstate-cache
 TARGET_DL_DIR=/home/shared/downloads
 
 rm -f conf/site.conf
+cat $SCRIPT_DIR/site.conf >> conf/site.conf
 if [ -e "$TARGET_SSTATE_DIR" ] ; then
     echo SSTATE_DIR=\"$TARGET_SSTATE_DIR\" >> conf/site.conf
 fi
