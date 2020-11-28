@@ -22,3 +22,5 @@ cd $YOCTO_FSLC_DIR
 
 repo init -u https://github.com/varigit/variscite-bsp-platform.git -b $BRANCHNAME
 repo sync -j$(nproc --all)
+
+git clone https://github.com/m-tmatma/meta-test-image.git $YOCTO_FSLC_DIR/sources/meta-test-image

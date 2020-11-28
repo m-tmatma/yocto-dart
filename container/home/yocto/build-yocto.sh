@@ -24,4 +24,7 @@ bitbake meta-toolchain
 #./tmp/deploy/sdk/fsl-framebuffer-glibc-x86_64-meta-toolchain-armv7at2hf-neon-toolchain-2.6.2.sh -y
 ./tmp/deploy/sdk/fsl-imx-fb-glibc-x86_64-meta-toolchain-cortexa7t2hf-neon-toolchain-5.4-zeus.sh -y
 
-bitbake core-image-minimal
+#bitbake core-image-minimal
+
+bitbake-layers add-layer $SCRIPT_DIR/var-fsl-yocto/sources/meta-test-image
+bitbake custom-test-image
