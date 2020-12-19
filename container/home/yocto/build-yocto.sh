@@ -8,7 +8,7 @@ EULA=y
 cd $SCRIPT_DIR/var-fsl-yocto
 MACHINE=imx6ul-var-dart DISTRO=fsl-imx-fb . var-setup-release.sh -b build_fb
 #MACHINE=imx6ul-var-dart DISTRO=fsl-framebuffer . var-setup-release.sh build_fb
-bitbake-layers add-layer $SCRIPT_DIR/var-fsl-yocto/sources/meta-swupdate-custom
+#bitbake-layers add-layer $SCRIPT_DIR/var-fsl-yocto/sources/meta-swupdate-custom
 bitbake-layers add-layer $SCRIPT_DIR/var-fsl-yocto/sources/meta-test-image
 #bitbake-layers add-layer $SCRIPT_DIR/var-fsl-yocto/sources/meta-swupdate-boards
 
@@ -37,6 +37,7 @@ if [ ! -e /opt/fsl-imx-fb/5.4-zeus ]; then
     fi
 fi
 
-bitbake -c cleanall  swupdate
-bitbake -DDD swupdate
+#bitbake -c cleanall  swupdate
+#bitbake  swupdate
 #bitbake custom-test-image
+bitbake update-image
