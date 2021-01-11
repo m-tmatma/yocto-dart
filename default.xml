@@ -5,7 +5,7 @@
   <remote fetch="https://github.com/priv-kweihmann"    name="meta-sca"/>
   <remote fetch="https://github.com/m-tmatma"          name="meta-test-image"/>
 
-  <project remote="meta-sca"      name="meta-sca"                 path="container/home/yocto/var-fsl-yocto/sources/meta-sca"  />
-  <project remote="meta-test-image"      name="meta-test-image"                 path="container/home/yocto/var-fsl-yocto/sources/meta-test-image"  />
+  <project remote="meta-sca"             revision="zeus"   name="meta-sca"           path="container/home/yocto/var-fsl-yocto/sources/meta-sca"  />
+  <project remote="meta-test-image"                        name="meta-test-image"    path="container/home/yocto/var-fsl-yocto/sources/meta-test-image"  />
 </manifest>
 
