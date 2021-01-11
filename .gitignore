@@ -10,5 +10,9 @@ container/home/yocto/.wget-hsts
 container/home/yocto/.sudo_as_admin_successful
 container/home/yocto/var-fslc-yocto/
 container/home/yocto/var-fsl-yocto/
+container/home/yocto/var-fslc-yocto/.repo
+container/home/yocto/var-fsl-yocto/.repo
 container/home/yocto/downloads/
 nohup.out*
+.repo
+
