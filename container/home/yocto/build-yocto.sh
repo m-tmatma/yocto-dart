@@ -16,6 +16,8 @@ bitbake-layers add-layer $SCRIPT_DIR/var-fsl-yocto/sources/meta-test-image
 TARGET_SSTATE_DIR=/home/shared/sstate-cache
 TARGET_DL_DIR=/home/shared/downloads
 
+echo 'INHERIT += "sca"' >> conf/local.conf
+
 rm -f conf/site.conf
 if [ -e "$TARGET_SSTATE_DIR" ] ; then
     echo SSTATE_DIR=\"$TARGET_SSTATE_DIR\" >> conf/site.conf
