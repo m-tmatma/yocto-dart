@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <default sync-j="4" revision="master"/>
+
+  <remote fetch="https://github.com/priv-kweihmann"    name="meta-sca"/>
+
+  <project remote="meta-sca"      name="meta-sca"                 path="container/home/yocto/var-fsl-yocto/sources/meta-sca"  />
+</manifest>
+
