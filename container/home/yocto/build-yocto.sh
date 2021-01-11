@@ -8,6 +8,9 @@ EULA=y
 cd $SCRIPT_DIR/var-fsl-yocto
 MACHINE=imx6ul-var-dart DISTRO=fsl-imx-fb . var-setup-release.sh -b build_fb
 #MACHINE=imx6ul-var-dart DISTRO=fsl-framebuffer . var-setup-release.sh build_fb
+if [ -e $SCRIPT_DIR/var-fsl-yocto/sources/meta-sca ]; then
+    bitbake-layers add-layer $SCRIPT_DIR/var-fsl-yocto/sources/meta-sca
+fi
 bitbake-layers add-layer $SCRIPT_DIR/var-fsl-yocto/sources/meta-test-image
 
 TARGET_SSTATE_DIR=/home/shared/sstate-cache
