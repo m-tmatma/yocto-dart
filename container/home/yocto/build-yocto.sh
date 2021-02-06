@@ -31,8 +31,8 @@ if [ "$ACTION" = "makecache" ]; then
 fi
 
 if [ "$ACTION" = "fetch" -o "$ACTION" = "makecache" ]; then
-    bitbake meta-toolchain --runall=fetch
-    bitbake core-image-minimal --runall=fetch
+    bitbake meta-toolchain --runall=fetch -f
+    bitbake core-image-minimal --runall=fetch -f
 elif [ "$ACTION" = "build" ]; then
     bitbake meta-toolchain
     #./tmp/deploy/sdk/fsl-framebuffer-glibc-x86_64-meta-toolchain-armv7at2hf-neon-toolchain-2.6.2.sh -y
