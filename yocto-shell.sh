@@ -27,12 +27,8 @@ mkdir -p $HOST_DOCKER_OPT
 mkdir -p $HOST_SOURCE_MIRROR_URL
 
 COMMAND_ARG=$1
-if [ x$COMMAND_ARG = x"build" ] ; then
-	COMMAND_LINE=$TARGET_HOME/build-yocto.sh build
-	ADDITIONAL_OPT=
-	X11OPTIONS=
-elif [ x$COMMAND_ARG = x"fetch" ] ; then
-	COMMAND_LINE=$TARGET_HOME/build-yocto.sh fetch
+if [ x$COMMAND_ARG = x"build" -o  x$COMMAND_ARG = x"fetch"  -o  x$COMMAND_ARG = x"makecache" ] ; then
+	COMMAND_LINE="$TARGET_HOME/build-yocto.sh $COMMAND_ARG"
 	ADDITIONAL_OPT=
 	X11OPTIONS=
 elif [ x$COMMAND_ARG = x"shell" ] ; then
@@ -50,6 +46,8 @@ else
 	echo usage:
 	echo $0 build
 	echo $0 shell
+	echo $0 fetch
+	echo $0 makecache
 	exit 0
 fi
 

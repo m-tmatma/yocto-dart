@@ -25,14 +25,16 @@ rm -f conf/site.conf
 echo SOURCE_MIRROR_URL = \"file:///$TARGET_SOURCE_MIRROR_DIR\" >> conf/site.conf
 echo INHERIT += \"own-mirrors\"                                >> conf/site.conf
 
-if [ "$ACTION" = "fetch"]; then
+if [ "$ACTION" = "makecache" ]; then
     echo DL_DIR = \"$TARGET_SOURCE_MIRROR_DIR\"                    >> conf/site.conf
     echo BB_GENERATE_MIRROR_TARBALLS = \"1\"                       >> conf/site.conf
+fi
 
+if [ "$ACTION" = "fetch" -o "$ACTION" = "makecache" ]; then
     bitbake meta-toolchain --runall=fetch
-    bitbake core-image-minimal
+    bitbake core-image-minimal --runall=fetch
 elif [ "$ACTION" = "build"]; then
-    bitbake meta-toolchain --runall=fetch
+    bitbake meta-toolchain
     #./tmp/deploy/sdk/fsl-framebuffer-glibc-x86_64-meta-toolchain-armv7at2hf-neon-toolchain-2.6.2.sh -y
     #./tmp/deploy/sdk/fsl-imx-fb-glibc-x86_64-meta-toolchain-cortexa7t2hf-neon-toolchain-5.4-zeus.sh -y
 
@@ -41,5 +43,6 @@ else
 	echo usage:
 	echo $0 build
 	echo $0 fetch
+	echo $0 makecache
 	exit 1
 fi
