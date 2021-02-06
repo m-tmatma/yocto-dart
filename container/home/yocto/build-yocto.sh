@@ -1,6 +1,9 @@
 #!/bin/bash
-
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
+ACTION=$1
+if [ -z "$ACTION" ]; then
+    ACTION=build
+fi
 
 # supress EULA confirmation at setup-environment
 EULA=y
@@ -22,11 +25,21 @@ rm -f conf/site.conf
 echo SOURCE_MIRROR_URL = \"file:///$TARGET_SOURCE_MIRROR_DIR\" >> conf/site.conf
 echo INHERIT += \"own-mirrors\"                                >> conf/site.conf
 
-echo DL_DIR = \"$TARGET_SOURCE_MIRROR_DIR\"                    >> conf/site.conf
-echo BB_GENERATE_MIRROR_TARBALLS = \"1\"                       >> conf/site.conf
+if [ "$ACTION" = "fetch"]; then
+    echo DL_DIR = \"$TARGET_SOURCE_MIRROR_DIR\"                    >> conf/site.conf
+    echo BB_GENERATE_MIRROR_TARBALLS = \"1\"                       >> conf/site.conf
 
-bitbake meta-toolchain --runall=fetch
-#./tmp/deploy/sdk/fsl-framebuffer-glibc-x86_64-meta-toolchain-armv7at2hf-neon-toolchain-2.6.2.sh -y
-#./tmp/deploy/sdk/fsl-imx-fb-glibc-x86_64-meta-toolchain-cortexa7t2hf-neon-toolchain-5.4-zeus.sh -y
+    bitbake meta-toolchain --runall=fetch
+    bitbake core-image-minimal
+elif [ "$ACTION" = "build"]; then
+    bitbake meta-toolchain --runall=fetch
+    #./tmp/deploy/sdk/fsl-framebuffer-glibc-x86_64-meta-toolchain-armv7at2hf-neon-toolchain-2.6.2.sh -y
+    #./tmp/deploy/sdk/fsl-imx-fb-glibc-x86_64-meta-toolchain-cortexa7t2hf-neon-toolchain-5.4-zeus.sh -y
 
-bitbake core-image-minimal --runall=fetch
+    bitbake core-image-minimal
+else
+	echo usage:
+	echo $0 build
+	echo $0 fetch
+	exit 1
+fi

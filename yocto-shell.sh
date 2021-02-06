@@ -28,7 +28,11 @@ mkdir -p $HOST_SOURCE_MIRROR_URL
 
 COMMAND_ARG=$1
 if [ x$COMMAND_ARG = x"build" ] ; then
-	COMMAND_LINE=$TARGET_HOME/build-yocto.sh
+	COMMAND_LINE=$TARGET_HOME/build-yocto.sh build
+	ADDITIONAL_OPT=
+	X11OPTIONS=
+elif [ x$COMMAND_ARG = x"fetch" ] ; then
+	COMMAND_LINE=$TARGET_HOME/build-yocto.sh fetch
 	ADDITIONAL_OPT=
 	X11OPTIONS=
 elif [ x$COMMAND_ARG = x"shell" ] ; then
