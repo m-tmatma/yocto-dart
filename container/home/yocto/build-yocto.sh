@@ -33,7 +33,7 @@ fi
 if [ "$ACTION" = "fetch" -o "$ACTION" = "makecache" ]; then
     bitbake meta-toolchain --runall=fetch
     bitbake core-image-minimal --runall=fetch
-elif [ "$ACTION" = "build"]; then
+elif [ "$ACTION" = "build" ]; then
     bitbake meta-toolchain
     #./tmp/deploy/sdk/fsl-framebuffer-glibc-x86_64-meta-toolchain-armv7at2hf-neon-toolchain-2.6.2.sh -y
     #./tmp/deploy/sdk/fsl-imx-fb-glibc-x86_64-meta-toolchain-cortexa7t2hf-neon-toolchain-5.4-zeus.sh -y
