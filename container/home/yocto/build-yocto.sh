@@ -24,14 +24,28 @@ rm -f conf/site.conf
 # fi
 if [ -n "$REMOTE_SOURCE_MIRROR" ]; then
     echo SOURCE_MIRROR_URL = \"$REMOTE_SOURCE_MIRROR\"             >> conf/site.conf
+
+    echo -----------------------------------------------------------
+    echo MIRROR_URL is used
+    echo $REMOTE_SOURCE_MIRROR
+    echo -----------------------------------------------------------
 else
     echo SOURCE_MIRROR_URL = \"file:///$TARGET_SOURCE_MIRROR_DIR\" >> conf/site.conf
+
+    echo -----------------------------------------------------------
+    echo local mirror is set
+    echo $TARGET_SOURCE_MIRROR_DIR
+    echo -----------------------------------------------------------
 fi
 echo INHERIT += \"own-mirrors\"                                >> conf/site.conf
 
 if [ "$ACTION" = "makecache" ]; then
     echo DL_DIR = \"$TARGET_SOURCE_MIRROR_DIR\"                    >> conf/site.conf
     echo BB_GENERATE_MIRROR_TARBALLS = \"1\"                       >> conf/site.conf
+
+    echo -----------------------------------------------------------
+    echo makecache $TARGET_SOURCE_MIRROR_DIR
+    echo -----------------------------------------------------------
 fi
 
 if [ "$ACTION" = "fetch" -o "$ACTION" = "makecache" ]; then
@@ -49,4 +63,18 @@ else
 	echo $0 fetch
 	echo $0 makecache
 	exit 1
+fi
+
+if [ -n "$REMOTE_SOURCE_MIRROR" ]; then
+    echo -----------------------------------------------------------
+    echo remote mirror: $REMOTE_SOURCE_MIRROR
+    echo -----------------------------------------------------------
+else
+    echo -----------------------------------------------------------
+    echo local cache: target $TARGET_SOURCE_MIRROR_DIR
+    echo local cache: host $HOST_SOURCE_MIRROR_URL
+    if [ "$ACTION" = "makecache" ]; then
+        echo created local cache at $TARGET_SOURCE_MIRROR_DIR
+    fi
+    echo -----------------------------------------------------------
 fi
