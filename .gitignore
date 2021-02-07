@@ -12,3 +12,4 @@ container/home/yocto/var-fslc-yocto/
 container/home/yocto/var-fsl-yocto/
 container/home/yocto/downloads/
 nohup.out*
+.repo
