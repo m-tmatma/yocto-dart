@@ -22,7 +22,11 @@ rm -f conf/site.conf
 # if [ -e "$TARGET_DL_DIR" ] ; then
 #     echo DL_DIR=\"$TARGET_DL_DIR\" >> conf/site.conf
 # fi
-echo SOURCE_MIRROR_URL = \"file:///$TARGET_SOURCE_MIRROR_DIR\" >> conf/site.conf
+if [ -n "$REMOTE_SOURCE_MIRROR" ]; then
+    echo SOURCE_MIRROR_URL = \"$REMOTE_SOURCE_MIRROR\"             >> conf/site.conf
+else
+    echo SOURCE_MIRROR_URL = \"file:///$TARGET_SOURCE_MIRROR_DIR\" >> conf/site.conf
+fi
 echo INHERIT += \"own-mirrors\"                                >> conf/site.conf
 
 if [ "$ACTION" = "makecache" ]; then
