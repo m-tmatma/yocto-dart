@@ -41,7 +41,8 @@ RUN mkdir -p ${REPODIR} \
  && chmod a+x ${REPO}
 ENV PATH ${REPODIR}:$PATH
 
-RUN apt-get update && apt-get install -y  bash-completion
+RUN apt-get update && apt-get install -y  bash-completion kmod
+RUN mkdir -p /dev/net && mknod /dev/net/tun c 10 200 && chmod 666 /dev/net/tun
 
 ######################################################################################
 #
