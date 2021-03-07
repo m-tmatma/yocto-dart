@@ -9,8 +9,9 @@ fi
 EULA=y
 
 cd $SCRIPT_DIR/var-fsl-yocto
-MACHINE=imx6ul-var-dart DISTRO=fsl-imx-fb . var-setup-release.sh -b build_fb
+#MACHINE=imx6ul-var-dart DISTRO=fsl-imx-fb . var-setup-release.sh -b build_fb
 #MACHINE=imx6ul-var-dart DISTRO=fsl-framebuffer . var-setup-release.sh build_fb
+source sources/poky/oe-init-build-env build-x64
 
 # TARGET_SSTATE_DIR=/home/shared/sstate-cache
 # TARGET_DL_DIR=/home/shared/downloads
