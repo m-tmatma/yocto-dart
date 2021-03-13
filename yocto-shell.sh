@@ -45,6 +45,9 @@ elif [ x$COMMAND_ARG = x"shell" ] ; then
 elif [ x$COMMAND_ARG = x"priv-shell" ] ; then
 	COMMAND_LINE=/bin/bash
 	ADDITIONAL_OPT="-it --privileged"
+elif [ x$COMMAND_ARG = x"qemu" ] ; then
+	COMMAND_LINE="$TARGET_HOME/x64-qemu.sh"
+	ADDITIONAL_OPT="-it --privileged"
 else
 	echo usage:
 	echo $0 build
@@ -52,6 +55,7 @@ else
 	echo $0 fetch
 	echo $0 makecache
 	echo $0 priv-shell
+	echo $0 qemu
 	exit 0
 fi
 
