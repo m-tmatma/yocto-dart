@@ -51,6 +51,7 @@ else
 	echo $0 shell
 	echo $0 fetch
 	echo $0 makecache
+	echo $0 priv-shell
 	exit 0
 fi
 
