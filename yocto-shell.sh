@@ -42,6 +42,9 @@ elif [ x$COMMAND_ARG = x"shell" ] ; then
 
 		xhost +local:
 	fi
+elif [ x$COMMAND_ARG = x"priv-shell" ] ; then
+	COMMAND_LINE=/bin/bash
+	ADDITIONAL_OPT="-it --privileged"
 else
 	echo usage:
 	echo $0 build
@@ -59,5 +62,4 @@ docker run $ADDITIONAL_OPT --rm -u yocto:yocto \
 	-v $HOST_DOCKER_OPT:$TARGET_OPT \
 	-v $HOST_SOURCE_MIRROR_URL:$TARGET_SOURCE_MIRROR_URL \
 	-v $HOST_DOCKER_HOME:$TARGET_HOME \
-	--privileged \
 	$X11OPTIONS -w $TARGET_HOME $DOCKERIMAGE $COMMAND_LINE
